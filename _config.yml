@@ -17,3 +17,27 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
   - jekyll-include-cache
+  - jekyll-archives
+  - jekyll-paginate
+
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive
+    tag: archive
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
+
+sass:
+  sass_dir: assets/css
+
+paginate: 10
+paginate_path: "/page:num"  
+
+kramdown:
+  input: GFM
+  hard_wrap: false     # 단일 개행을 <br>로 바꾸지 않음
+excerpt_separator: "<!--more-->"

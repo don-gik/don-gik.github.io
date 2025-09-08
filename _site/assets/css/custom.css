@@ -1,0 +1,41 @@
+@charset "UTF-8";
+.home-font-lg .page__content { font-size: 0.7rem; line-height: 1.75; }
+
+.home-font-lg .page__content h1 { font-size: 0.8rem; }
+
+.home-font-lg .page__content h2 { font-size: 0.8rem; }
+
+.wide .page__content { font-size: 0.7rem; line-height: 1.75; }
+
+.wide .page__content h1 { font-size: 0.8rem; }
+
+.wide .page__content h2 { font-size: 0.8rem; }
+
+/* 핵심 ①: 목록 항목 본문 칼럼 폭 제한 해제 */
+.layout--home .page__inner-wrap { max-width: 1280px !important; }
+
+/* 그리드 컬럼 최소폭 강제(override) */
+.layout--home .page__content .entries-grid { grid-template-columns: repeat(auto-fill, minmax(600px, 1fr)) !important; column-gap: 24px; row-gap: 18px; }
+
+/* MM가 걸어둔 본문 칼럼 제한 해제 */
+.compact-home .archive__item-body { max-width: none !important; }
+
+/* 제목: 2줄까지 보이고 … */
+.compact-home .archive__item-title, .compact-home .archive__item-title a { display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal !important; line-height: 1.25; font-size: .8rem; word-break: keep-all; overflow-wrap: normal; }
+
+/* 요약: 2줄 클램프 + 문단/BR로 인한 강제 줄바꿈 제거 */
+.compact-home .archive__item-excerpt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; color: #555; font-size: .7rem; line-height: 1.45; word-break: keep-all; overflow-wrap: normal; }
+
+.compact-home .archive__item-excerpt p { display: inline; margin: 0; }
+
+.compact-home .archive__item-excerpt br { display: none; }
+
+/* (옵션) 글목록 폰트 살짝 축소 */
+figure.highlight, div.highlighter-rouge { position: relative; }
+
+.copy-btn { position: absolute; top: 8px; right: 8px; padding: 4px 8px; font-size: 12px; line-height: 1; border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa; cursor: pointer; }
+
+.copy-btn:hover { background: #ebf0f4; }
+
+/* 버튼이 코드 위를 가리지 않게 살짝 여유 */
+figure.highlight.has-copy pre, div.highlighter-rouge.has-copy pre { padding-top: 2rem; }
