@@ -3,8 +3,8 @@ layout: single
 title: "비코 1차 과제 풀이"
 excerpt: "1차 과제 비코"
 classes: wide
-categories: [coding, problem-solving]
-tags: [coding, problem-solving, solution]
+categories: [coding]
+tags: [coding, solution]
 toc: false
 ---
 
