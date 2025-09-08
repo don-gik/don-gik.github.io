@@ -1,0 +1,19 @@
+title: Don-gik blog
+description: notes, codes, and my life
+url: https://don-gik.github.io
+timezone: Asia/Seoul
+minimal_mistakes_skin: "default"
+logo: /assets/images/site-logo.png
+author:
+  name: "don-gik"
+  avatar: /assets/images/me.jpg
+  bio: "programming • music"
+defaults:
+  - scope: {path: "" , type: "posts"}
+    values: {layout: "single", author_profile: true}
+remote_theme: "mmistakes/minimal-mistakes@4.26.0"
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-include-cache
