@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const getText = (wrapper) => {
     const c = getCode(wrapper);
-    return (c ? c.innerText : wrapper.innerText).trimEnd();
+    if (!c) return wrapper.innerText.trimEnd();
+
+    // Rouge 줄번호(gutter) 제거
+    const clone = c.cloneNode(true);
+    clone.querySelectorAll('.gutter').forEach(el => el.remove());
+
+    return clone.innerText.trimEnd();
   };
 
   const detectLang = (wrapper) => {
