@@ -19,6 +19,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-archives
   - jekyll-paginate
+  - jekyll-sitemap
 
 jekyll-archives:
   enabled:
@@ -39,12 +40,16 @@ paginate_path: "/page:num"
 
 kramdown:
   input: GFM
-  hard_wrap: false     # 단일 개행을 <br>로 바꾸지 않음
+  hard_wrap: false
   syntax_highlighter: rouge
 excerpt_separator: "<!--more-->"
 
 
-# 이미 있을 수 있음 — 아래만 추가/확인
 search: true
-search_full_content: true   # 본문 전체 인덱싱(옵션)
-search_provider: lunr       # 기본값이라 생략 가능
+search_full_content: true
+search_provider: lunr
+
+
+title: "Don-gik's Blog"
+description: "Topics about Coding, Music, and school life"
+url: "https://don-gik.github.io"
