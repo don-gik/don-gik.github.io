@@ -41,16 +41,3 @@
 }
 .compact-home .archive__item-excerpt p{ display:inline; margin:0; }
 .compact-home .archive__item-excerpt br{ display:none; }
-
-/* (옵션) 글목록 폰트 살짝 축소 */
-
-figure.highlight, div.highlighter-rouge { position: relative; }
-.copy-btn{
-  position:absolute; top:8px; right:8px;
-  padding:4px 8px; font-size:12px; line-height:1;
-  border:1px solid #d0d7de; border-radius:6px;
-  background:#f6f8fa; cursor:pointer;
-}
-.copy-btn:hover{ background:#ebf0f4; }
-/* 버튼이 코드 위를 가리지 않게 살짝 여유 */
-figure.highlight.has-copy pre, div.highlighter-rouge.has-copy pre { padding-top: 2rem; }

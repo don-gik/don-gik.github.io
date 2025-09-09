@@ -40,4 +40,5 @@ paginate_path: "/page:num"
 kramdown:
   input: GFM
   hard_wrap: false     # 단일 개행을 <br>로 바꾸지 않음
+  syntax_highlighter: rouge
 excerpt_separator: "<!--more-->"
