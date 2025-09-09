@@ -69,8 +69,8 @@ void getPar(int current, int last) {
     return;
 }
 
-int solve(void) {
-    int ans = 0;
+long long int solve(void) {
+    long long int ans = 0;
 
     for(int i=0; i<k; i++) {
         uf.depth[s[i]] = 1;
@@ -90,7 +90,7 @@ int solve(void) {
 
     for(int i=0; i<k; i++) {
         if(uf.find(s[i]) == s[i]) {
-            ans += uf.cnt[s[i]] * (uf.cnt[s[i]] - 1) / 2;
+            ans += (long long int)uf.cnt[s[i]] * ((long long int)uf.cnt[s[i]] - 1) / 2;
         }
 
         // cout << uf.cnt[s[i]] << " ";
