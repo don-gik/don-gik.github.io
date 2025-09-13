@@ -1,6 +1,7 @@
 title: Don-gik blog
 description: notes, codes, and my life
 url: https://don-gik.github.io
+baseurl: ""
 timezone: Asia/Seoul
 minimal_mistakes_skin: "default"
 logo: /assets/images/site-logo.png
