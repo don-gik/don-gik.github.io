@@ -50,10 +50,5 @@ search: true
 search_full_content: true
 search_provider: lunr
 
-
-title: "Don-gik's Blog"
-description: "Topics about Coding, Music, and school life"
-url: "https://don-gik.github.io"
-
 rouge:
   linenos: table
