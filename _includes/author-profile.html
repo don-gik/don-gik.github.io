@@ -1,0 +1,319 @@
+{% assign author = page.author | default: page.authors[0] | default: site.author %}
+{% assign author = site.data.authors[author] | default: author %}
+
+<div class="author-profile">
+  {% if author.avatar %}
+    <div class="author__avatar">
+      <img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}">
+    </div>
+  {% endif %}
+
+  <div>
+    {% if author.name %}
+      <h3 class="author__name">{{ author.name }}</h3>
+    {% endif %}
+    {% if author.bio %}
+      <p class="author__bio">{{ author.bio | markdownify }}</p>
+    {% endif %}
+  </div>
+
+  <div class="follow-under-profile">
+    <a class="gh-link"
+        href="https://github.com/don-gik" target="_blank" rel="noopener">
+      Follow on GitHub
+    </a>
+
+    <details class="email-sub">
+      <summary>Follow by email</summary>
+      <form action="https://buttondown.email/api/emails/embed-subscribe/don-gik"
+            method="post" target="_blank" class="pretty-subscribe" novalidate>
+        <div class="ps-field">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <input id="sub-email" name="email" type="email"
+                  placeholder="you@example.com" required inputmode="email" />
+          <button type="submit" class="btn btn--success btn--xs">Follow</button>
+        </div>
+        <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="ps-hp">
+      </form>
+    </details>
+  </div>
+
+  {% if author.location %}
+    <div class="author__location">
+      <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> {{ author.location }}
+    </div>
+  {% endif %}
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">{{ site.data.ui-text[site.locale].follow_label | default: "Follow" }}</button>
+    <ul class="author__urls social-icons">
+      {% if author.links %}
+        {% for link in author.links %}
+          <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fas fa-link' }}" aria-hidden="true"></i> {{ link.label }}</a></li>
+        {% endfor %}
+      {% endif %}
+
+      {% if author.uri %}
+        <li>
+          <a href="{{ author.uri }}" rel="nofollow noopener noreferrer">
+            <i class="fas fa-fw fa-link" aria-hidden="true"></i>
+            <span class="label">{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.email %}
+        <li>
+          <a href="mailto:{{ author.email }}" rel="nofollow noopener noreferrer">
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i>
+            <span class="label">{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.keybase %}
+        <li>
+          <a href="https://keybase.io/{{ author.keybase }}" rel="nofollow noopener noreferrer">
+            <i class="fas fa-fw fa-key" aria-hidden="true"></i>
+            <span class="label">Keybase</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.twitter %}
+        <li>
+          <a href="https://twitter.com/{{ author.twitter }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i>
+            <span class="label">Twitter</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.facebook %}
+        <li>
+          <a href="https://www.facebook.com/{{ author.facebook }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i>
+            <span class="label">Facebook</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.google_plus %}
+        <li>
+          <a href="https://plus.google.com/+{{ author.google_plus }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-google-plus-square" aria-hidden="true"></i>
+            <span class="label">Google+</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.linkedin %}
+        <li>
+          <a href="https://www.linkedin.com/in/{{ author.linkedin }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>
+            <span class="label">LinkedIn</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.xing %}
+        <li>
+          <a href="https://www.xing.com/profile/{{ author.xing }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-xing-square" aria-hidden="true"></i>
+            <span class="label">XING</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.instagram %}
+        <li>
+          <a href="https://instagram.com/{{ author.instagram }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i>
+            <span class="label">Instagram</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.tumblr %}
+        <li>
+          <a href="https://{{ author.tumblr }}.tumblr.com" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-tumblr-square" aria-hidden="true"></i>
+            <span class="label">Tumblr</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.bitbucket %}
+        <li>
+          <a href="https://bitbucket.org/{{ author.bitbucket }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i>
+            <span class="label">Bitbucket</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.github %}
+        <li>
+          <a href="https://github.com/{{ author.github }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+            <span class="label">GitHub</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.gitlab %}
+        <li>
+          <a href="https://gitlab.com/{{ author.gitlab }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-gitlab" aria-hidden="true"></i>
+            <span class="label">GitLab</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.stackoverflow %}
+        <li>
+          <a href="https://www.stackoverflow.com/users/{{ author.stackoverflow }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
+            <span class="label">Stack Overflow</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.lastfm %}
+        <li>
+          <a href="https://last.fm/user/{{ author.lastfm }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-lastfm-square" aria-hidden="true"></i>
+            <span class="label">Last.fm</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.dribbble %}
+        <li>
+          <a href="https://dribbble.com/{{ author.dribbble }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-dribbble-square" aria-hidden="true"></i>
+            <span class="label">Dribbble</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.pinterest %}
+        <li>
+          <a href="https://www.pinterest.com/{{ author.pinterest }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-pinterest-square" aria-hidden="true"></i>
+            <span class="label">Pinterest</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.foursquare %}
+        <li>
+          <a href="https://foursquare.com/{{ author.foursquare }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-foursquare" aria-hidden="true"></i>
+            <span class="label">Foursquare</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.steam %}
+        <li>
+          <a href="https://steamcommunity.com/id/{{ author.steam }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-steam-square" aria-hidden="true"></i>
+            <span class="label">Steam</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.youtube %}
+        <li>
+          <a href="https://www.youtube.com/user/{{ author.youtube }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-youtube-square" aria-hidden="true"></i>
+            <span class="label">YouTube</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.soundcloud %}
+        <li>
+          <a href="https://soundcloud.com/{{ author.soundcloud }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-soundcloud" aria-hidden="true"></i>
+            <span class="label">SoundCloud</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.weibo %}
+        <li>
+          <a href="https://www.weibo.com/{{ author.weibo }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-weibo" aria-hidden="true"></i>
+            <span class="label">Weibo</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.flickr %}
+        <li>
+          <a href="https://www.flickr.com/photos/{{ author.flickr }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-flickr" aria-hidden="true"></i>
+            <span class="label">Flickr</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.codepen %}
+        <li>
+          <a href="https://codepen.io/{{ author.codepen }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-codepen" aria-hidden="true"></i>
+            <span class="label">CodePen</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.vine %}
+        <li>
+          <a href="https://vine.co/{{ author.vine }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-vine" aria-hidden="true"></i>
+            <span class="label">Vine</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.googlescholar %}
+        <li>
+          <a href="{{ author.googlescholar }}" rel="nofollow noopener noreferrer">
+            <i class="fas fa-fw fa-graduation-cap" aria-hidden="true"></i>
+            <span class="label">Google Scholar</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.orcid %}
+        <li>
+          <a href="{{ author.orcid }}" rel="nofollow noopener noreferrer">
+            <i class="ai ai-fw ai-orcid-square" aria-hidden="true"></i>
+            <span class="label">ORCID</span>
+          </a>
+        </li>
+      {% endif %}
+
+      {% if author.wikipedia %}
+        <li>
+          <a href="https://en.wikipedia.org/wiki/User:{{ author.wikipedia }}" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-wikipedia-w" aria-hidden="true"></i>
+            <span class="label">Wikipedia</span>
+          </a>
+        </li>
+      {% endif %}
+
+      <!-- RSS Feeds -->
+      {% if site.plugins contains "jekyll-feed" %}
+        <li>
+          <a href="{{ '/feed.xml' | relative_url }}" rel="nofollow noopener noreferrer">
+            <i class="fas fa-fw fa-rss-square" aria-hidden="true"></i>
+            <span class="label">{{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>

@@ -8,7 +8,9 @@ logo: /assets/images/site-logo.png
 author:
   name: "don-gik"
   avatar: /assets/images/me.jpg
-  bio: "programming • music"
+  bio: "Hello I'm dongik. This is my blog."
+
+
 defaults:
   - scope: {path: "" , type: "posts"}
     values: {layout: "single", author_profile: true}

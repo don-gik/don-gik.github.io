@@ -41,3 +41,100 @@
 }
 .compact-home .archive__item-excerpt p{ display:inline; margin:0; }
 .compact-home .archive__item-excerpt br{ display:none; }
+
+/* Follow buttons and email subscription under profile */
+.author__bio {
+  text-align: center; /* Center the content of the bio */
+}
+
+.follow-under-profile {
+  margin-top: 15px;
+}
+
+/* GitHub Follow Button */
+.gh-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #24292e; /* GitHub-like color */
+  color: #ffffff !important; /* Override theme link color */
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.gh-link:hover {
+  background-color: #333;
+  color: #ffffff !important;
+}
+
+/* Email Subscription Form */
+.email-sub {
+  font-size: 0.8rem;
+}
+
+.email-sub summary {
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  list-style: none; /* Remove default marker */
+}
+
+.email-sub summary::-webkit-details-marker {
+  display: none; /* Hide marker for Chrome/Safari */
+}
+
+.email-sub summary:hover {
+  background-color: #333;
+}
+
+.email-sub[open] summary {
+  background-color: #333;
+}
+
+.pretty-subscribe {
+  margin-top: 10px;
+}
+
+.ps-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ps-field i {
+  font-size: 1.2em;
+  color: #888;
+}
+
+.ps-field input[type="email"] {
+  background-color: #1e1e1e;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  color: #eee;
+  width: 160px; /* Adjust width as needed */
+}
+
+.ps-field input[type="email"]::placeholder {
+  color: #888;
+}
+
+.ps-field .btn {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  /* The theme's .btn--success class will handle the rest */
+}
+
+/* Visually hide the honeypot field */
+.ps-hp {
+  position: absolute;
+  left: -5000px;
+}
