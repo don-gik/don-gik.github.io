@@ -1,0 +1,18 @@
+<form action="https://buttondown.email/api/emails/embed-subscribe/don-gik"
+        method="post" target="_blank"
+        class="pretty-subscribe" novalidate>
+    <label for="sub-email" class="ps-label">Email Follow</label>
+
+  <div class="ps-field">
+    <i class="fas fa-envelope" aria-hidden="true"></i>
+    <input id="sub-email" name="email" type="email"
+           placeholder="you@example.com" required inputmode="email" />
+    <button type="submit" class="btn btn--success">Follow</button>
+  </div>
+
+  <p class="ps-help">Unfollow always available</p>
+
+  <!-- honeypot -->
+    <input type="text" name="hp" tabindex="-1" autocomplete="off"
+             aria-hidden="true" class="ps-hp">
+</form>
