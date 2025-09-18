@@ -1,0 +1,55 @@
+<div class="fixed-follow" data-follow>
+  <button class="btn btn--primary" type="button" data-follow-toggle aria-expanded="false" aria-controls="follow-popover">
+    Follow
+  </button>
+
+  <div id="follow-popover" class="follow-popover" hidden>
+    <!-- GitHub follow -->
+    <a class="github-button"
+       href="https://github.com/don-gik"
+       data-size="large"
+       data-show-count="true"
+       aria-label="Follow @don-gik GitHub">
+       GitHub
+    </a>
+
+    <!-- Email subscribe (Buttondown 예시) -->
+    <form action="https://buttondown.email/api/emails/embed-subscribe/don-gik"
+          method="post" target="_blank" class="subscribe" aria-label="Email subscribe">
+      <input type="email" name="email" placeholder="you@example.com" required>
+      <!-- honeypot -->
+      <input type="text" name="hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;">
+      <button type="submit" class="btn btn--primary">Subscribe</button>
+    </form>
+</div>
+
+<!-- GitHub Buttons script -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script>
+(function () {
+  const root = document.querySelector('[data-follow]');
+  if (!root) return;
+  const btn = root.querySelector('[data-follow-toggle]');
+  const pop = root.querySelector('#follow-popover');
+
+  function close() {
+    pop.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  function open() {
+    pop.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  btn.addEventListener('click', function () {
+    pop.hidden ? open() : close();
+  });
+  document.addEventListener('click', function (e) {
+    if (!root.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
