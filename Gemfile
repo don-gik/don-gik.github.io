@@ -7,7 +7,7 @@ gem "jekyll-sitemap"
 gem "jekyll-feed"
 gem "jekyll-include-cache"
 gem "jekyll-archives"
-gem "jekyll-paginate"
+gem "jekyll-paginator-v2"
 gem "jekyll-sitemap"
 gem "jekyll-seo-tag"
 end

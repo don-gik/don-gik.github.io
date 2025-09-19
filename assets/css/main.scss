@@ -1,50 +1,8 @@
-/* 프로필 아래 전용 축소 스타일 */
-.author__bio, .author__content {
-  .follow-under-profile{display:grid;gap:.4rem;margin-top:.4rem;max-width:360px}
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
 
-  /* GitHub: 색상 강조 제거 */
-  .gh-link{
-    font-size:.8rem; font-weight:600;
-    color:inherit; text-decoration:underline; text-underline-offset:2px;
-  }
-  .gh-link:hover{opacity:.85}
+@charset "utf-8";
 
-  .email-sub{border:1px solid rgba(255,255,255,.10);border-radius:.45rem;background:rgba(255,255,255,.03)}
-  .email-sub>summary{
-    list-style:none;cursor:pointer;padding:.28rem .5rem;font-size:.8rem;font-weight:600;
-    display:flex;align-items:center;gap:.35rem;
-  }
-  .email-sub>summary::-webkit-details-marker{display:none}
-  .email-sub>summary::before{content:"▸";opacity:.75;font-size:.75rem;transition:transform .15s}
-  .email-sub[open]>summary::before{transform:rotate(90deg)}
-  .email-sub[open]{padding-bottom:.4rem}
-
-  .pretty-subscribe{padding:0 .5rem}
-  .ps-hp{position:absolute;left:-9999px;width:1px;height:1px}
-
-  /* 입력란 축소 */
-  .ps-field{
-    margin-top:.2rem;display:grid;grid-template-columns:.9rem 1fr auto;align-items:center;gap:.3rem;
-    padding:.2rem .3rem .2rem .4rem;
-    border:1px solid rgba(255,255,255,.12);border-radius:9999px;background:rgba(255,255,255,.04)
-  }
-  .ps-field i{font-size:.75rem;opacity:.8}
-  .ps-field input[type=email]{
-    width:100%;border:0;outline:0;background:transparent;color:inherit;font:inherit;
-    font-size:.75rem;line-height:1.2;padding:.12rem 0;min-width:0;
-  }
-  .ps-field input::placeholder{opacity:.6}
-  .btn--xs{font-size:.72rem;line-height:1;padding:.26rem .55rem;border-radius:.35rem}
-
-  .ps-field:focus-within{
-    border-color:rgba(59,130,246,.5);
-    box-shadow:0 0 0 2px rgba(59,130,246,.18);
-    background:rgba(255,255,255,.055);
-  }
-
-  @media (max-width:480px){
-    .ps-field{grid-template-columns:.9rem 1fr;grid-auto-rows:auto}
-    .ps-field .btn--xs{grid-column:1/-1;width:100%}
-  }
-}
-
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials

@@ -21,8 +21,15 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-archives
-  - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-paginator-v2
+
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: '/page/:num/'
+  sort_field: 'date'
+  sort_reverse: true
 
 jekyll-archives:
   enabled:
@@ -38,13 +45,14 @@ jekyll-archives:
 sass:
   sass_dir: assets/css
 
-paginate: 10
-paginate_path: "/page:num"
-
 kramdown:
   input: GFM
   hard_wrap: false
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    # theme: 'monokai.sublime' # This is not a valid option here, it's a custom css
+
 excerpt_separator: "<!--more-->"
 
 
