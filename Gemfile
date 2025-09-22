@@ -10,4 +10,7 @@ gem "jekyll-archives"
 gem "jekyll-paginator-v2"
 gem "jekyll-sitemap"
 gem "jekyll-seo-tag"
+gem "rouge", "~> 4.2"
+gem "jekyll-sass-converter", "~> 2.2"
+gem "sass-embedded", "~> 1.80"
 end

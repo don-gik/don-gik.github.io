@@ -304,16 +304,6 @@
           </a>
         </li>
       {% endif %}
-
-      <!-- RSS Feeds -->
-      {% if site.plugins contains "jekyll-feed" %}
-        <li>
-          <a href="{{ '/feed.xml' | relative_url }}" rel="nofollow noopener noreferrer">
-            <i class="fas fa-fw fa-rss-square" aria-hidden="true"></i>
-            <span class="label">{{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</span>
-          </a>
-        </li>
-      {% endif %}
     </ul>
   </div>
 </div>
