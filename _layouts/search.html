@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<section class="search">
+  <header class="search__header">
+    <h1 class="page-title">{{ page.title | default: 'Search' }}</h1>
+    {% if page.subtitle %}
+      <p class="page-intro">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <form class="search__form" role="search" aria-label="Site search" novalidate>
+    <label class="sr-only" for="search-input">Search blog posts</label>
+    <input
+      id="search-input"
+      class="search__input"
+      type="search"
+      name="q"
+      placeholder="Type to search..."
+      autocomplete="off"
+      spellcheck="false"
+      data-search-input>
+    <p class="search__status muted" data-search-status>Loading index…</p>
+  </form>
+
+  <ol class="search__results" data-search-results aria-live="polite"></ol>
+</section>
+
+<script defer src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+<script defer src="https://unpkg.com/lunr-languages/lunr.stemmer.support.js"></script>
+<script defer src="https://unpkg.com/lunr-languages/lunr.ko.js"></script>
+<script defer src="{{ '/assets/js/search.js' | relative_url }}"></script>

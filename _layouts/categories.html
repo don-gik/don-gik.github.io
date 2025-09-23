@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+{% assign categories = site.categories | sort_natural %}
+{% assign total_categories = categories | size %}
+
+<section class="taxonomy">
+  <header class="taxonomy__header">
+    <h1 class="page-title">{{ page.title | default: 'Categories' }}</h1>
+    <p class="taxonomy__lede">
+      {% if page.description %}
+        {{ page.description }}
+      {% else %}
+        Browse {{ total_categories }} categor{% if total_categories == 1 %}y{% else %}ies{% endif %} to jump straight to the topics you care about.
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="taxonomy-grid">
+    {% for cat in categories %}
+      {% assign posts = cat[1] %}
+      {% assign post_count = posts | size %}
+      {% capture category_name %}{{ cat[0] | strip }}{% endcapture %}
+      {% if category_name != '' %}
+        {% assign slug = category_name | slugify %}
+        <a class="taxonomy-card" href="{{ '/categories/' | append: slug | append: '/' | relative_url }}">
+          <span class="taxonomy-card__name">{{ category_name }}</span>
+          <span class="taxonomy-card__count">{{ post_count }} post{% if post_count != 1 %}s{% endif %}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

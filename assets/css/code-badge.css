@@ -1,83 +1,76 @@
-figure.highlight, div.highlighter-rouge, div.highlight { position: relative; }
-figure.highlight > figcaption { display: none !important; } /* 하단 언어 캡션 숨김 */
+figure.highlight,
+div.highlighter-rouge,
+div.highlight {
+  position: relative;
+}
 
-/* 타이트 여백 + 상단 패딩(배지/버튼 공간) */
-figure.highlight, div.highlighter-rouge { margin-block: .15rem; border-radius: 8px; }
-figure.highlight > pre, div.highlighter-rouge > pre { padding: 1.4rem .5rem .5rem !important; }
-figure.highlight > pre, div.highlighter-rouge > pre, pre { margin:0; border-radius:8px; }
+figure.highlight > figcaption { display: none !important; }
 
-/* 언어 배지 (pill) */
+pre {
+  margin: 0;
+  border-radius: 0;
+  line-height: 1.4;
+  font-size: .83rem;
+}
+
 .code-badge{
-  position:absolute; top:.45rem; left:.6rem; z-index:10;
-  font:450 9px/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  color:#e6e6e6; pointer-events:none; padding:.1rem .25rem;
-}
-.code-badge::before{
-  content:""; position:absolute; inset:-3px -6px; z-index:-1;
-  border-radius:999px; background:rgba(91, 86, 86, 0.521);
-  border:1px solid rgba(43, 43, 43, 0.716); box-shadow:0 4px 10px rgba(0,0,0,.18);
-}
-
-/* Copy 버튼 */
-.copy-btn{
-  position:absolute; top:.3rem; right:.6rem; z-index:10;
-  font-size:9px; padding:.2rem .2rem; border-radius:4px;
-  border:1px solid #555; background:#3a3a3a; color:#e0e0e0; cursor:pointer; transition:.2s;
-}
-.copy-btn:hover{ background:#4a4a4a; border-color:#777; color:#fff; }
-.copy-btn:active{ transform:scale(.98); }
-
-/* 코드 내부 패딩/줄간격 */
-pre code { display:block; padding:0 !important; margin:0 !important; line-height:1.35; }
-
-/* --- 표시 모드 --- */
-/* 기본(스크롤) */
-.code-scroll figure.highlight pre,
-.code-scroll div.highlighter-rouge pre { white-space: pre; overflow-x: auto; }
-
-/* 단어 단위 줄바꿈: "코드 셀"만 wrap, gutter는 wrap 금지 */
-.code-wrap figure.highlight td.code pre,
-.code-wrap div.highlighter-rouge td.code pre {
-  white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; overflow-x: hidden;
-}
-.code-wrap figure.highlight td.gutter pre,
-.code-wrap div.highlighter-rouge td.gutter pre {
-  white-space: pre; word-break: normal; overflow-wrap: normal;
+  position:absolute;
+  inset: .2rem auto auto .6rem;
+  z-index:10;
+  font: 600 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  color: #f7f9fc;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(78,161,255,.85), rgba(34,197,94,.6));
+  box-shadow: 0 10px 20px rgba(78,161,255,.35);
+  pointer-events: none;
 }
 
-/* 글자 단위 줄바꿈: 동일하게 코드 셀만 */
-.code-wrap-char figure.highlight td.code pre,
-.code-wrap-char div.highlighter-rouge td.code pre {
-  white-space: pre-wrap; word-break: break-all; overflow-wrap: anywhere; overflow-x: hidden;
+.copy-btn {
+  position: absolute;
+  top: .2rem;
+  right: .6rem;
+  z-index: 10;
+  font-size: .6rem;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(4, 12, 20, .72);
+  color: #f5f7fb;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.code-wrap-char figure.highlight td.gutter pre,
-.code-wrap-char div.highlighter-rouge td.gutter pre {
-  white-space: pre; word-break: normal; overflow-wrap: normal;
+.copy-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(78,161,255,.6);
+  box-shadow: 0 12px 24px rgba(78,161,255,.28);
+}
+.copy-btn:active {
+  transform: scale(.98);
 }
 
-/* Rouge linenos=table 레이아웃 고정 */
-figure.highlight .rouge-table,
-div.highlighter-rouge .rouge-table {
-  border-spacing: 0;
+.rouge-table {
   width: 100%;
-  table-layout: fixed;           /* 열 폭 안정화 */
+  border-spacing: 0;
 }
 
-.rouge-table td.gutter {
-  width: 3.2em;                  /* 충분한 고정폭 */
-  white-space: nowrap;           /* 숫자 줄바꿈 금지 */
+.rouge-table td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.rouge-table .gutter {
+  width: 3.2em;
+  padding: .1rem .6rem .1rem .35rem;
   text-align: right;
-  color: #999;
-  user-select: none;             /* 복사 시 제외 */
-  padding-right: 0.8em;
-  vertical-align: top;
-}
-.rouge-table td.gutter pre {
-  margin: 0; padding: 0;         /* 기본 pre 여백 제거 */
-  white-space: pre;               /* 안전: 항상 pre */
+  color: rgba(226, 232, 240, .48);
+  user-select: none;
+  border-right: 1px solid rgba(255,255,255,.06);
+  background: rgba(3, 12, 20, .52);
 }
 
-.rouge-table td.code {
-  padding-left: 0.8em;
-  vertical-align: top;
+.rouge-table .code {
+  padding: .1rem .85rem .1rem .7rem;
 }

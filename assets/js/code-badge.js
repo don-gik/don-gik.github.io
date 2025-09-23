@@ -22,11 +22,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const c = getCode(wrapper);
     if (!c) return wrapper.innerText.trimEnd();
 
-    // Rouge 줄번호(gutter) 제거
     const clone = c.cloneNode(true);
-    clone.querySelectorAll('.gutter').forEach(el => el.remove());
+    clone.querySelectorAll('.gutter, .code-frame__gutter').forEach((el) => el.remove());
+    const normalized = clone.querySelector('.code-frame__code');
+    if (normalized) {
+      return normalized.innerText.trimEnd();
+    }
 
     return clone.innerText.trimEnd();
+  };
+
+  const normalizeRougeTable = (wrapper) => {
+    const table = wrapper.querySelector('table.rouge-table');
+    if (!table || table.dataset.normalized === 'true') return;
+
+    const gutterPre = table.querySelector('td.gutter pre');
+    const codePre = table.querySelector('td.code pre');
+
+    if (!codePre) {
+      table.dataset.normalized = 'true';
+      return;
+    }
+
+    const frame = document.createElement('div');
+    frame.className = 'code-frame';
+
+    if (gutterPre) {
+      const gutterClone = gutterPre.cloneNode(true);
+      gutterClone.classList.add('code-frame__gutter');
+      frame.appendChild(gutterClone);
+    }
+
+    const codeClone = codePre.cloneNode(true);
+    codeClone.classList.add('code-frame__code');
+    frame.appendChild(codeClone);
+
+    table.replaceWith(frame);
   };
 
   const detectLang = (wrapper) => {
@@ -44,6 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 코드 없으면 스킵
     if (!getCode(wrapper)) return;
+
+    normalizeRougeTable(wrapper);
 
     // 위치 기준 고정
     const pos = getComputedStyle(wrapper).position;

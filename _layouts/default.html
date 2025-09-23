@@ -1,0 +1,82 @@
+---
+---
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0d10">
+    <title>
+      {% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}
+    </title>
+    {% seo %}
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+    {% include head/custom.html %}
+  </head>
+  <body class="layout-{{ page.layout | default: 'default' }}" data-search-json="{{ '/search.json' | relative_url }}">
+    <a class="skip-nav" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="site-brand" href="{{ '/' | relative_url }}">
+          {% if site.logo %}
+            <img class="site-brand__logo" src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo">
+          {% endif %}
+          <span class="site-brand__text">
+            <span class="site-brand__title">{{ site.title }}</span>
+            {% if site.description %}
+              <span class="site-brand__tagline">{{ site.description }}</span>
+            {% endif %}
+          </span>
+        </a>
+
+        {% assign nav_links = site.data.navigation.main %}
+        {% if nav_links == nil %}
+          {% assign nav_links = site.navigation %}
+        {% endif %}
+        {% if nav_links %}
+          {% assign current_path = page.url | default: '/' | replace: 'index.html', '' %}
+          {% if current_path == '' %}{% assign current_path = '/' %}{% endif %}
+          <nav class="site-nav" aria-label="Main navigation">
+            {% for item in nav_links %}
+              {% assign raw_url = item.url | default: '' %}
+              {% assign is_external = false %}
+              {% if raw_url contains '://' %}
+                {% assign is_external = true %}
+                {% assign nav_href = raw_url %}
+              {% else %}
+                {% assign nav_href = raw_url | relative_url %}
+              {% endif %}
+
+              {% assign is_active = false %}
+              {% unless is_external %}
+                {% assign normalized = raw_url | replace: 'index.html', '' %}
+                {% if normalized == '' %}{% assign normalized = '/' %}{% endif %}
+                {% if current_path == normalized %}{% assign is_active = true %}{% endif %}
+              {% endunless %}
+
+              <a class="site-nav__link{% if is_active %} is-active{% endif %}" href="{{ nav_href }}"{% if is_external or item.external %} target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a>
+            {% endfor %}
+          </nav>
+        {% endif %}
+      </div>
+    </header>
+
+    <main id="content" class="container content">
+      {{ content }}
+
+      {% if page.author_profile %}
+        <div class="content__author-profile">
+          {% include author-profile.html %}
+        </div>
+      {% endif %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>&copy; {{ site.time | date: '%Y' }} {{ site.title }}.</div>
+        <div class="muted">Built with Jekyll.</div>
+      </div>
+    </footer>
+  </body>
+</html>

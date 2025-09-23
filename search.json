@@ -1,0 +1,35 @@
+---
+layout: null
+permalink: /search.json
+search_exclude: true
+---
+[
+{% assign documents = '' | split: '' %}
+{% assign post_docs = site.posts | where_exp: 'doc', 'doc.search_exclude != true' %}
+{% assign page_docs = site.pages | where_exp: 'doc', 'doc.search_exclude != true' %}
+{% assign documents = documents | concat: post_docs | concat: page_docs %}
+{% assign empty_array = '' | split: '' %}
+{% for collection in site.collections %}
+  {% unless collection.label == 'posts' or collection.label == 'drafts' %}
+    {% assign collection_docs = collection.docs | where_exp: 'doc', 'doc.output != false and doc.search_exclude != true' %}
+    {% assign documents = documents | concat: collection_docs %}
+  {% endunless %}
+{% endfor %}
+{% assign documents = documents | uniq %}
+{% for doc in documents %}
+  {% assign doc_id = doc.id | default: doc.url | default: forloop.index0 %}
+  {% assign doc_date = doc.date | default: doc.last_modified_at %}
+  {% assign excerpt_source = doc.excerpt | default: doc.description | default: doc.content %}
+  {
+    "id": {{ doc_id | jsonify }},
+    "title": {{ doc.title | default: doc.name | jsonify }},
+    "url": {{ doc.url | relative_url | jsonify }},
+    "date": {% if doc_date %}{{ doc_date | date: '%Y-%m-%d' | jsonify }}{% else %}null{% endif %},
+    "collection": {{ doc.collection | default: 'pages' | jsonify }},
+    "categories": {{ doc.categories | default: doc.category | default: empty_array | jsonify }},
+    "tags": {{ doc.tags | default: empty_array | jsonify }},
+    "excerpt": {{ excerpt_source | strip_html | strip_newlines | truncate: 300 | jsonify }},
+    "content": {{ doc.content | strip_html | strip_newlines | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

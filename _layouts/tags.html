@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+{% assign tags = site.tags | sort_natural %}
+{% assign total_tags = tags | size %}
+
+<section class="taxonomy">
+  <header class="taxonomy__header">
+    <h1 class="page-title">{{ page.title | default: 'Tags' }}</h1>
+    <p class="taxonomy__lede">
+      {% if page.description %}
+        {{ page.description }}
+      {% else %}
+        Explore {{ total_tags }} tag{% if total_tags != 1 %}s{% endif %} to find topics that match your interests.
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="taxonomy-grid taxonomy-grid--compact">
+    {% for tag in tags %}
+      {% assign posts = tag[1] %}
+      {% assign post_count = posts | size %}
+      {% capture tag_name %}{{ tag[0] | strip }}{% endcapture %}
+      {% if tag_name != '' %}
+        {% assign slug = tag_name | slugify %}
+        <a class="taxonomy-card" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">
+          <span class="taxonomy-card__name">#{{ tag_name }}</span>
+          <span class="taxonomy-card__count">{{ post_count }} post{% if post_count != 1 %}s{% endif %}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

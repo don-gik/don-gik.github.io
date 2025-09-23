@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+{% assign posts_col = paginator.posts | default: site.posts %}
+
+<section class="home">
+  {% if page.title %}
+    <h1 class="page-title">{{ page.title }}</h1>
+  {% endif %}
+  {% if page.excerpt %}
+    <p class="page-intro">{{ page.excerpt }}</p>
+  {% endif %}
+
+  <div class="post-feed">
+    {% assign show_excerpt = page.show_excerpts %}
+    {% if show_excerpt == nil %}{% assign show_excerpt = true %}{% endif %}
+    {% for post in posts_col %}
+      {% include post-card.html post=post show_excerpt=show_excerpt %}
+    {% endfor %}
+  </div>
+
+  {% if paginator.total_pages and paginator.total_pages > 1 %}
+    <nav class="pagination" aria-label="Pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+      {% else %}
+        <span class="is-disabled">← Newer</span>
+      {% endif %}
+      <span>Page {{ paginator.page }} / {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+      {% else %}
+        <span class="is-disabled">Older →</span>
+      {% endif %}
+    </nav>
+  {% endif %}
+</section>

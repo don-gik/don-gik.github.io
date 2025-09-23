@@ -3,26 +3,37 @@ description: notes, codes, and my life
 url: https://don-gik.github.io
 baseurl: ""
 timezone: Asia/Seoul
-minimal_mistakes_skin: "dark"
+# Social + metadata
+github_username: don-gik
+# Using a custom in-repo theme (no external Jekyll theme)
+theme: null
 logo: /assets/images/site-logo.png
 author:
   name: "don-gik"
   avatar: /assets/images/me.jpg
   bio: "Hello I'm dongik. This is my blog."
+  github: don-gik
+  email: don-gik@users.noreply.github.com
+  email_follow_url: https://buttondown.email/don-gik
+
+newsletter_action: "https://buttondown.email/api/emails/embed-subscribe/don-gik"
+newsletter_placeholder: "you@example.com"
+newsletter_cta: "Follow"
+newsletter_url: "https://buttondown.email/don-gik"
 
 
 defaults:
   - scope: {path: "" , type: "posts"}
     values: {layout: "single", author_profile: true}
-remote_theme: "mmistakes/minimal-mistakes@4.26.0"
+  - scope: {path: "", type: "pages"}
+    values: {author_profile: true}
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-archives
   - jekyll-sitemap
-  - jekyll-paginator-v2
+  - jekyll-paginate-v2
 
 pagination:
   enabled: true
@@ -44,6 +55,7 @@ jekyll-archives:
 
 sass:
   sass_dir: assets/css
+  sass_compiler: sassc
 
 kramdown:
   input: GFM
