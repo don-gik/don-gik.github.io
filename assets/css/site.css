@@ -158,8 +158,8 @@ pre code{background:none;border:0;padding:0;line-height:inherit}
 
 /* adjust gutter numbers height when wrapping */
 /* Rouge table fallback (if any remains): adjust line numbers when rows are marked */
-.is-softwrapped .highlight td.gutter pre .lineno,
-.is-softwrapped .highlight td.gutter pre.lineno{
+.code-wrap-is-active .highlight td.gutter pre .lineno,
+.code-wrap-is-active .highlight td.gutter pre.lineno{
   height:calc(1em * var(--code-wrap-lh));
   line-height:calc(1em * var(--code-wrap-lh));
 }

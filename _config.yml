@@ -31,7 +31,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-include-cache
-  - jekyll-archives
   - jekyll-sitemap
   - jekyll-paginate-v2
 
@@ -42,16 +41,7 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive
-    tag: archive
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
+
 
 
 

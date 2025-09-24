@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+{% assign name = page.term | default: page.name | default: page.title %}
+{% assign taxon = page.taxon | default: 'tag' %}
+
+{% comment %}
+  Primary source: site.categories/site.tags.
+  Fallback: filter site.posts in case the map is unavailable (e.g., future posts or safe mode quirks).
+{% endcomment %}
+{% if taxon == 'category' %}
+  {% assign posts = site.categories[name] %}
+  {% if posts == nil or posts.size == 0 %}
+    {% assign posts = site.posts | where_exp: 'p', 'p.categories contains name' %}
+  {% endif %}
+{% else %}
+  {% assign posts = site.tags[name] %}
+  {% if posts == nil or posts.size == 0 %}
+    {% assign posts = site.posts | where_exp: 'p', 'p.tags contains name' %}
+  {% endif %}
+{% endif %}
+{% if posts == nil %}{% assign posts = '' | split: '' %}{% endif %}
+
+<section class="archive">
+  <header class="archive__header">
+    <h1 class="page-title">
+      {% if taxon == 'category' %}Category{% else %}Tag{% endif %}: {{ name }}
+    </h1>
+    {% assign total = posts | size %}
+    <p class="muted">{{ total }} post{% if total != 1 %}s{% endif %}</p>
+  </header>
+
+  <div class="post-feed">
+    {% assign sorted = posts | sort: 'date' | reverse %}
+    {% for post in sorted %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+    {% if sorted == empty %}
+      <div class="taxonomy-empty">No posts found.</div>
+    {% endif %}
+  </div>
+</section>

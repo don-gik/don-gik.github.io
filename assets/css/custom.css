@@ -1,5 +1,7 @@
 .post { max-width: min(100%, var(--post-max, 1024px)); }
 :root { --container: clamp(960px, 92vw, 1024px); }
+/* Give pages a bit more side breathing room on all viewports */
+.container { padding: 0 clamp(18px, 5vw, 36px); }
 
 /* Mobile: compact post meta and make single-line with horizontal scroll */
 @media (max-width: 640px) {
@@ -97,3 +99,6 @@
   .todo__form{flex-wrap:nowrap}
   .todo__add{white-space:nowrap}
 }
+
+/* Make anchored taxonomy sections visible below sticky header */
+.taxonomy h2 { scroll-margin-top: 90px; }
