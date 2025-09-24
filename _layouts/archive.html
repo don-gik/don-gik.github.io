@@ -6,7 +6,7 @@ layout: default
   <h1 class="archive-title">{{ page.title }}</h1>
   <div class="archive-posts">
     {% for post in page.posts %}
-      {% include post-card.html %}
+      {% include post-card.html post=post %}
     {% endfor %}
   </div>
 </div>

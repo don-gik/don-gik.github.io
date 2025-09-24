@@ -1,5 +1,5 @@
 title: Don-gik blog
-description: notes, codes, and my life
+description: coding is fun
 url: https://don-gik.github.io
 baseurl: ""
 timezone: Asia/Seoul
@@ -53,6 +53,8 @@ jekyll-archives:
     category: /categories/:name/
     tag: /tags/:name/
 
+
+
 sass:
   sass_dir: assets/css
   sass_compiler: sassc
@@ -63,7 +65,10 @@ kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     css_class: 'highlight'
-    # theme: 'monokai.sublime' # This is not a valid option here, it's a custom css
+    block:
+      line_numbers: true
+    span:
+      line_numbers: false
 
 excerpt_separator: "<!--more-->"
 
@@ -73,4 +78,4 @@ search_full_content: true
 search_provider: lunr
 
 rouge:
-  linenos: table
+  linenos: true
