@@ -62,3 +62,38 @@
   /* Hide verbose status text on narrow screens for a cleaner 1-line layout */
   .search__status { display: none; }
 }
+
+/* To‑Do page */
+.todo{max-width:760px;margin:0 auto;display:grid;gap:1.1rem}
+.todo__title{margin:0}
+.todo__form{display:flex;gap:.6rem;align-items:center}
+.todo__input{flex:1 1 auto;min-width:0;padding:.85rem 1rem;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--heading);font:inherit;font-size:1rem;box-shadow:0 10px 20px rgba(3,12,20,.25)}
+.todo__input:focus{outline:0;border-color:rgba(78,161,255,.6);box-shadow:0 14px 28px rgba(78,161,255,.18)}
+.todo__add{padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(78,161,255,.16);color:var(--heading);font:600 .95rem/1 "Inter",system-ui,sans-serif;cursor:pointer}
+.todo__add:hover{border-color:rgba(78,161,255,.45)}
+.todo__controls{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.todo__filters{display:flex;gap:.4rem}
+.todo__filter{padding:.45rem .85rem;border-radius:999px;border:1px solid transparent;color:var(--text-muted);background:transparent;cursor:pointer}
+.todo__filter:hover{color:var(--heading);border-color:rgba(255,255,255,.1)}
+.todo__filter.is-active{color:var(--heading);background:rgba(78,161,255,.12);border-color:rgba(78,161,255,.4)}
+.todo__actions{display:flex;align-items:center;gap:.8rem;color:var(--text-muted)}
+.todo__clear{padding:.45rem .8rem;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text-muted);cursor:pointer}
+.todo__clear:hover{color:var(--heading);border-color:rgba(78,161,255,.45)}
+.todo__list{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.todo__item{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.65rem .8rem;border-radius:12px;border:1px solid rgba(255,255,255,.06);background:var(--surface-2);box-shadow:0 12px 22px rgba(3,12,20,.26)}
+.todo__label{display:flex;align-items:center;gap:.7rem}
+.todo__toggle{width:1.05rem;height:1.05rem}
+.todo__text{font-size:1rem}
+.todo__item.is-completed .todo__text{color:var(--text-muted);text-decoration:line-through;opacity:.85}
+.todo__item-actions{display:flex;gap:.45rem}
+.todo__edit,.todo__delete{padding:.35rem .7rem;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text-muted);cursor:pointer}
+.todo__edit:hover,.todo__delete:hover{color:var(--heading);border-color:rgba(78,161,255,.35)}
+.todo__delete{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.35);color:#ffb2b2}
+.todo__delete:hover{border-color:rgba(239,68,68,.55);color:#ffd6d6}
+.todo__empty{padding:.9rem 1rem;text-align:center;color:var(--text-muted);border:1px dashed var(--border);border-radius:12px;background:rgba(255,255,255,.02)}
+.todo__edit-input{font:inherit;font-size:1rem;color:var(--heading);background:transparent;border:1px dashed rgba(255,255,255,.2);border-radius:8px;padding:.2rem .35rem;min-width:10ch}
+
+@media (max-width: 640px){
+  .todo__form{flex-wrap:nowrap}
+  .todo__add{white-space:nowrap}
+}

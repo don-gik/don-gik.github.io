@@ -1,0 +1,50 @@
+# 관리 방법
+# - 이 파일을 커밋해서 할 일을 추가/수정/완료 처리하세요.
+# - 필드: title(필수), done(기본: false), note(선택), due(선택: YYYY-MM-DD)
+# - 예시 항목은 주석을 해제해서 사용하세요.
+
+tasks: 
+  - title: "블로그 정리하기"
+    done: true
+    note: "와 해냄!"
+    due: 2025-09-24
+
+  - title: "R&E 포스트 완성시키기"
+    done: false
+    note: "초안 작성중..."
+    due: 2025-09-24
+
+  - title: "물리 15장 빨간 문제 풀기"
+    done: false
+    note: "오늘 마감인데"
+    due: 2025-09-24
+
+  - title: "생명 수업 영상 다 듣기"
+    done: false
+    note: "언제 하지"
+    due: 2025-09-27
+
+  - title: "밀린 생명 숙제하기"
+    done: false
+    note: "언제 하지"
+    due: 2025-09-27
+
+  - title: "밀린 지학 숙제하기"
+    done: false
+    note: "와 이런..."
+    due: 2025-09-27
+
+  - title: "밀린 수학 숙제하기"
+    done: false
+    note: "시간이 없다"
+    due: 2025-09-27
+
+# 예시)
+# tasks:
+#   - title: "블로그 테마 정리"
+#     done: false
+#     note: "헤더 여백, 태그 스타일 조정"
+#     due: 2025-10-01
+#   - title: "WSL 포스트 초안 완성"
+#     done: true
+#     note: "스크린샷 교체"
