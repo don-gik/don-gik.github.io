@@ -5,11 +5,36 @@
 <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
 <script defer src="{{ '/assets/js/code-badge.js' | relative_url }}"></script>
 
+{% comment %}
+  MathJax (GitHub Pages–safe):
+  - Enable per page with `math: true` in front matter, or site-wide by setting `math: true` in _config.yml.
+  - This avoids relying on custom plugins (which GitHub Pages ignores in safe mode).
+{% endcomment %}
+{% if page.math or site.math %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      tags: 'ams'
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+  };
+  // Prevent duplicate loads if injected elsewhere
+  if (!document.getElementById('mathjax-script')) {
+    const s = document.createElement('script');
+    s.id = 'mathjax-script'; s.async = true;
+    s.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js';
+    document.head.appendChild(s);
+  }
+  </script>
+{% endif %}
+
 {% if page.private_password %}
 <meta name="private-password" content="{{ page.private_password | escape }}">
 {% endif %}
 
 {% if page.private_title %}<meta name="private-title" content="{{ page.private_title | escape }}">{% endif %}
 {% if page.private_remember %}<meta name="private-remember" content="{{ page.private_remember | escape }}">{% endif %}
-
 

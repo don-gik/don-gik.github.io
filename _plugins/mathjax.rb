@@ -21,7 +21,8 @@ module DonGik
     HTML
 
     def self.needs_math?(doc)
-      return true if doc.data && doc.data['math']
+      # If front matter sets math: true, let Liquid include handle it
+      return false if doc.data && doc.data['math']
       html = doc.output.to_s
       return false if html.nil? || html.empty?
       return true if html.include?('$$')
@@ -52,4 +53,3 @@ Jekyll::Hooks.register [:pages, :posts, :documents], :post_render do |doc|
     warn "[mathjax] #{e.class}: #{e.message}"
   end
 end
-
