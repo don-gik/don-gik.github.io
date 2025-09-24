@@ -48,3 +48,17 @@
   }
   .subscribe-field button { width: auto; }
 }
+
+/* Header: smooth hide/show animation (used on mobile via JS) */
+.site-header { transition: transform .18s ease-out; will-change: transform; }
+@media (max-width: 720px) {
+  .site-header--hidden { transform: translateY(-100%); }
+}
+
+/* Search page: keep search controls to a single row on mobile */
+@media (max-width: 640px) {
+  .search__form { display: flex; align-items: center; gap: 8px; }
+  .search__input { flex: 1 1 auto; min-width: 0; }
+  /* Hide verbose status text on narrow screens for a cleaner 1-line layout */
+  .search__status { display: none; }
+}
