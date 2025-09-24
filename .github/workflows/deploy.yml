@@ -32,7 +32,9 @@ jobs:
           bundler-cache: true
 
       - name: Build site (include future posts)
-        run: bundle exec jekyll build --future --baseurl "${{ steps.pages.outputs.base_url }}"
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --future
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
