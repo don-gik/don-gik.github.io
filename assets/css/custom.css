@@ -1,2 +1,50 @@
 .post { max-width: min(100%, var(--post-max, 1024px)); }
 :root { --container: clamp(960px, 92vw, 1024px); }
+
+/* Mobile: compact post meta and make single-line with horizontal scroll */
+@media (max-width: 640px) {
+  /* Single post header meta (date · categories) */
+  .post__meta {
+    font-size: .82rem;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Post footer tags: single line, scrollable, smaller chips */
+  .post__tags {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    gap: .45rem;
+  }
+  .post__tags a {
+    font-size: .76rem;
+    padding: .3rem .6rem;
+  }
+
+  /* Post cards (home/archive): compact meta and tags with scroll */
+  .post-card__meta {
+    font-size: .8rem;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .post-card__category { padding: .12rem .5rem; }
+  .post-card__tags { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; gap: .45rem; }
+  .post-card__tags a { font-size: .76rem; padding: .28rem .55rem; }
+
+  /* Author profile: keep email subscribe field on one line */
+  .subscribe-field {
+    grid-template-columns: 1fr auto; /* don't stack input and button */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .subscribe-field button { width: auto; }
+}
