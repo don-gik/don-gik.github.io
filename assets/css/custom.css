@@ -1,0 +1,2 @@
+.post { max-width: min(100%, var(--post-max, 1024px)); }
+:root { --container: clamp(960px, 92vw, 1024px); }
