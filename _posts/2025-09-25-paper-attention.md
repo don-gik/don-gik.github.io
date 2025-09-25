@@ -53,8 +53,7 @@ tailwind: true
 <div class="glass-card group
             transition-transform duration-300 ease-in-out transform  hover:-translate-y-0.5">
   <a href="https://arxiv.org/abs/1706.03762"
-     class="inline-block underline decoration-2 decoration-white/40 text-white/90 transition-color duration-500 ease-in-out transform
-            group-hover:decoration-white group-hover:text-white">
+     class="inline-block underline decoration-2 decoration-white/40 text-white/90 transition-colors duration-200 group-hover:text-white">
     <!-- bg image -->
     <img src="/assets/images/base/1.png" alt=""
         class="absolute inset-0 h-full w-full object-cover" />
@@ -99,6 +98,9 @@ Glass Morphism 만들고 싶었어서 만들어봤어요 react랑 three.js 쓰�
       inset 0 0 0px 0px rgba(255, 255, 255, 0);
     position: relative;
     overflow: hidden;
+
+    margin-inline: auto;
+    width: min(100%, 28rem);
   }
 
   .glass-card::before {
@@ -124,9 +126,10 @@ Glass Morphism 만들고 싶었어서 만들어봤어요 react랑 three.js 쓰�
   }
 </style>
 
-<div class="glass-card">
+<div class="glass-card group
+            transition-transform duration-300 ease-in-out transform  hover:-translate-y-0.5">
   <a href="https://arxiv.org/abs/1706.03762"
-     class="group relative block overflow-hidden rounded-xl shadow-lg">
+     class="inline-block underline decoration-2 decoration-white/40 text-white/90 transition-colors duration-200 group-hover:text-white">
     <!-- bg image -->
     <img src="/assets/images/base/1.png" alt=""
         class="absolute inset-0 h-full w-full object-cover" />
