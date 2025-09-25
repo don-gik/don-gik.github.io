@@ -1,4 +1,0 @@
-# Local development overrides
-# Include future-dated posts so taxonomy pages show content even if post dates are in the future on your machine.
-future: true
-

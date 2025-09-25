@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional: dark body defaults */
+@layer base {
+  :root { color-scheme: dark; }
+  html { background-color: #0b0b0f; }
+}

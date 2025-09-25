@@ -1,4 +1,9 @@
 <meta name="color-scheme" content="dark">
+{%- comment -%}
+  Tailwind build output (assets/css/main.css).
+  Load first so site.css/custom.css can intentionally override base styles.
+  Enable globally or per-page via front matter: `tailwind: true`.
+{%- endcomment -%}
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/code-badge.css' | relative_url }}">
@@ -38,3 +43,11 @@
 
 {% if page.private_title %}<meta name="private-title" content="{{ page.private_title | escape }}">{% endif %}
 {% if page.private_remember %}<meta name="private-remember" content="{{ page.private_remember | escape }}">{% endif %}
+
+{%- comment -%}
+  Load Tailwind last so its utilities have higher precedence than generic site rules.
+  Preflight is disabled in tailwind.config.js to avoid resetting base styles.
+{%- endcomment -%}
+{% if site.tailwind or page.tailwind %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% endif %}

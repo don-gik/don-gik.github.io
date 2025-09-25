@@ -1,6 +1,6 @@
 vendor
 .bundle
-Gemfile.lock
 _site
+.jekyll-cache
 node_modules
 GEMINI.md
