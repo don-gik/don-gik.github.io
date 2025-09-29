@@ -11,6 +11,24 @@
 <script defer src="{{ '/assets/js/code-badge.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/header.js' | relative_url }}"></script>
 
+{%- comment -%}
+  React + react-three-fiber bundle (optional per-page):
+  Enable with `react: true` in page front matter (or site.react in _config.yml).
+  It auto-mounts into any element with `[data-r3f-canvas]`.
+{%- endcomment -%}
+{% if page.react or site.react %}
+<script>
+  // Minimal browser polyfills for packages expecting Node globals
+  window.global = window.global || window;
+  window.process = window.process || { env: { NODE_ENV: 'production' } };
+  // Some libraries read process.env.NODE_ENV specifically; make sure it's set
+  if (!window.process.env) window.process.env = { NODE_ENV: 'production' };
+  if (!window.process.env.NODE_ENV) window.process.env.NODE_ENV = 'production';
+  // Ensure Buffer is not accidentally referenced (not provided)
+</script>
+<script defer src="{{ '/assets/react-dist/site-react-app.js' | relative_url }}"></script>
+{% endif %}
+
 {% comment %}
   MathJax (GitHub Pages–safe):
   - Enable per page with `math: true` in front matter, or site-wide by setting `math: true` in _config.yml.

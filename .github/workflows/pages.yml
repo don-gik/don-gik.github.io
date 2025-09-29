@@ -25,7 +25,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm ci
+      - run: npm install
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -34,11 +34,8 @@ jobs:
 
       - uses: actions/configure-pages@v5
 
-      # Build Tailwind output -> assets/css/main.css
-      - run: npm run build:css
-
-      # Build Jekyll site -> _site
-      - run: bundle exec jekyll build --trace
+      # Build CSS, React bundle, and Jekyll site
+      - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
