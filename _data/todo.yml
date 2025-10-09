@@ -20,7 +20,7 @@ tasks:
     due: 2025-09-24
 
   - title: "생명 수업 영상 다 듣기"
-    done: false
+    done: true
     note: "언제 하지"
     due: 2025-09-27
 
@@ -38,13 +38,3 @@ tasks:
     done: false
     note: "시간이 없다"
     due: 2025-09-27
-
-# 예시)
-# tasks:
-#   - title: "블로그 테마 정리"
-#     done: false
-#     note: "헤더 여백, 태그 스타일 조정"
-#     due: 2025-10-01
-#   - title: "WSL 포스트 초안 완성"
-#     done: true
-#     note: "스크린샷 교체"
