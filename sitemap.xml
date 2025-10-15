@@ -1,0 +1,42 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- comment -%} Pages {%- endcomment -%}
+{%- for page in site.pages -%}
+  {%- if page.sitemap != false and page.url and page.url != '/404.html' -%}
+  <url>
+    <loc>{{ page.url | absolute_url }}</loc>
+    {%- assign lastmod = page.last_modified_at | default: page.date -%}
+    {%- if lastmod -%}<lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>{%- endif -%}
+  </url>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Posts {%- endcomment -%}
+{%- for post in site.posts -%}
+  {%- if post.sitemap != false -%}
+  <url>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Other collections (exclude posts) {%- endcomment -%}
+{%- for collection in site.collections -%}
+  {%- if collection.label != 'posts' -%}
+    {%- for doc in collection.docs -%}
+      {%- if doc.sitemap != false -%}
+      <url>
+        <loc>{{ doc.url | absolute_url }}</loc>
+        <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+      </url>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+
+</urlset>
+
