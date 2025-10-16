@@ -2,9 +2,13 @@
 layout: default
 ---
 
-<div class="taxonomy-archive">
-  <h1 class="page-title">{{ page.title }}</h1>
-  <div class="taxonomy-posts"></div>
-</div>
+<section class="taxonomy-archive">
+  <header class="archive__header">
+    <h1 class="page-title"><span class="js-tax-label">Browse</span>: <span class="js-tax-term">All</span></h1>
+    <p class="muted js-tax-count" aria-live="polite"></p>
+  </header>
+
+  <div class="post-feed taxonomy-posts"></div>
+</section>
 
 <script src="{{ '/assets/js/taxonomy.js' | relative_url }}"></script>

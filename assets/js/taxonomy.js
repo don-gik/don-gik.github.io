@@ -5,6 +5,10 @@
   const SEARCH_DATA_URL = document.body.getAttribute('data-search-json') || '/search.json';
   const locale = document.documentElement.getAttribute('lang') || 'en';
 
+  const $label = document.querySelector('.js-tax-label');
+  const $term = document.querySelector('.js-tax-term');
+  const $count = document.querySelector('.js-tax-count');
+
   let documents = [];
 
   function truncate(text, maxLength) {
@@ -15,8 +19,31 @@
     return `${truncated.slice(0, lastSpace > 40 ? lastSpace : maxLength)}…`;
   }
 
+  function slugify(str) {
+    return String(str)
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[^\w\s-]/g, '')
+      .trim()
+      .replace(/[\s_]+/g, '-')
+      .replace(/-+/g, '-');
+  }
+
+  function setHeader(taxonomyType, query) {
+    const isTag = taxonomyType === 'tags';
+    const label = isTag ? 'Tag' : 'Category';
+    if ($label) $label.textContent = label;
+    if ($term) $term.textContent = query;
+    try { document.title = `${label}: ${query} · ${document.title.replace(/^[^·]+·\s*/, '')}`; } catch (e) {}
+  }
+
   function renderResults(results) {
     resultsList.innerHTML = '';
+
+    if ($count) {
+      const n = results ? results.length : 0;
+      $count.textContent = `${n} post${n === 1 ? '' : 's'}`;
+    }
 
     if (!results || results.length === 0) {
       const empty = document.createElement('div');
@@ -57,18 +84,30 @@
 
   function filterByTaxonomy(data) {
     const url = new URL(window.location.href);
-    const query = url.searchParams.get('q');
+    const queryRaw = url.searchParams.get('q');
+    const query = queryRaw ? decodeURIComponent(queryRaw) : '';
     if (!query) {
       renderResults([]);
       return;
     }
 
+    // Determine taxonomy from path or explicit query param `t=category|tag`.
     const path = url.pathname;
-    const taxonomyType = path.includes('/tags/') ? 'tags' : 'categories';
+    let taxonomyType = path.includes('/tags/') ? 'tags' : 'categories';
+    const tParam = (url.searchParams.get('t') || '').toLowerCase();
+    if (tParam === 'tag') taxonomyType = 'tags';
+    if (tParam === 'category') taxonomyType = 'categories';
 
+    setHeader(taxonomyType, query);
+
+    const querySlug = slugify(query);
     const results = data.filter(doc => {
-      if (!doc[taxonomyType]) return false;
-      return doc[taxonomyType].includes(query);
+      const list = doc[taxonomyType];
+      if (!list || !Array.isArray(list)) return false;
+      // Prefer exact match, then slug match fallback
+      if (list.includes(query)) return true;
+      const listSlugs = list.map(slugify);
+      return listSlugs.includes(querySlug);
     });
 
     renderResults(results);

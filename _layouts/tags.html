@@ -24,7 +24,7 @@ layout: default
       {% capture tag_name %}{{ tag[0] | strip }}{% endcapture %}
       {% if tag_name != '' %}
         {% assign slug = tag_name | slugify %}
-        <a class="taxonomy-card" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">
+        <a class="taxonomy-card" href="{{ '/taxon/' | relative_url }}?t=tag&q={{ slug | url_encode }}">
           <span class="taxonomy-card__name">#{{ tag_name }}</span>
           <span class="taxonomy-card__count">{{ post_count }} post{% if post_count != 1 %}s{% endif %}</span>
         </a>

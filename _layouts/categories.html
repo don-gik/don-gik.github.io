@@ -24,7 +24,7 @@ layout: default
       {% capture category_name %}{{ cat[0] | strip }}{% endcapture %}
       {% if category_name != '' %}
         {% assign slug = category_name | slugify %}
-        <a class="taxonomy-card" href="{{ '/categories/' | append: slug | append: '/' | relative_url }}">
+        <a class="taxonomy-card" href="{{ '/taxon/' | relative_url }}?t=category&q={{ slug | url_encode }}">
           <span class="taxonomy-card__name">{{ category_name }}</span>
           <span class="taxonomy-card__count">{{ post_count }} post{% if post_count != 1 %}s{% endif %}</span>
         </a>
