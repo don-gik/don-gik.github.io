@@ -106,15 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const getText = (wrapper) => {
     const c = getCode(wrapper);
     if (!c) return wrapper.innerText.trimEnd();
-    if (c.classList.contains('code-frame')) {
-      const raw = c.dataset.raw;
-      if (raw) return raw;
+    const tidy = (value) => (value || '').replace(/\r/g, '').replace(/\n+$/, '');
+    const frame = c.classList.contains('code-frame') ? c : c.querySelector('.code-frame');
+    if (frame) {
+      if (frame.dataset.raw) return tidy(frame.dataset.raw);
+      const cells = [...frame.querySelectorAll('.code-frame__cell--code')];
+      if (cells.length) return tidy(cells.map((cell) => cell.innerText).join('\n'));
     }
     const clone = c.cloneNode(true);
     clone.querySelectorAll('.gutter, .code-frame__gutter, .code-frame__cell--gutter').forEach((el) => el.remove());
-    const normalized = clone.querySelector('.code-frame__code, .code-frame__cell--code');
-    if (normalized) return normalized.innerText.trimEnd();
-    return clone.innerText.trimEnd();
+    return tidy(clone.innerText);
   };
 
   const normalizeRougeTable = (wrapper) => {
