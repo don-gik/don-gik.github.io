@@ -3,13 +3,22 @@ layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign latest_lastmod = '' -%}
+{%- for post in site.posts -%}
+  {%- assign post_lastmod = post.last_modified_at | default: post.date -%}
+  {%- if latest_lastmod == '' or post_lastmod > latest_lastmod -%}
+    {%- assign latest_lastmod = post_lastmod -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if latest_lastmod == '' -%}
+  {%- assign latest_lastmod = site.time -%}
+{%- endif -%}
 {%- comment -%} Pages {%- endcomment -%}
 {%- for page in site.pages -%}
   {%- if page.sitemap != false and page.url and page.url != '/404.html' -%}
   <url>
     <loc>{{ page.url | absolute_url }}</loc>
-    {%- assign lastmod = page.last_modified_at | default: page.date -%}
-    {%- if lastmod -%}<lastmod>{{ lastmod | date_to_xmlschema }}</lastmod>{%- endif -%}
+    <lastmod>{{ latest_lastmod | date_to_xmlschema }}</lastmod>
   </url>
   {%- endif -%}
 {%- endfor -%}
@@ -19,7 +28,7 @@ layout: null
   {%- if post.sitemap != false -%}
   <url>
     <loc>{{ post.url | absolute_url }}</loc>
-    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+    <lastmod>{{ latest_lastmod | date_to_xmlschema }}</lastmod>
   </url>
   {%- endif -%}
 {%- endfor -%}
@@ -31,7 +40,7 @@ layout: null
       {%- if doc.sitemap != false -%}
       <url>
         <loc>{{ doc.url | absolute_url }}</loc>
-        <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+        <lastmod>{{ latest_lastmod | date_to_xmlschema }}</lastmod>
       </url>
       {%- endif -%}
     {%- endfor -%}
@@ -39,4 +48,3 @@ layout: null
 {%- endfor -%}
 
 </urlset>
-
