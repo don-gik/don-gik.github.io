@@ -1,6 +1,10 @@
 ---
 layout: home
 title: Home
+seo:
+  title: "Don-gik Blog | Home"
+  description: "Catch up on the latest coding tutorials, walkthroughs, and personal notes from don-gik."
+description: "Latest posts covering development tips, tooling experiments, and study notes from don-gik."
 author_profile: true
 entries_layout: list   # or list
 show_date: true

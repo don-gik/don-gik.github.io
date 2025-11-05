@@ -3,6 +3,9 @@ layout: default
 title: To‑Do
 description: 할 일 목록
 permalink: /todo/
+seo:
+  title: "To‑Do Roadmap | Don-gik Blog"
+  description: "Track the ongoing and completed tasks don-gik is tackling for future posts, projects, and site improvements."
 ---
 
 {% assign tasks = site.data.todo.tasks | default: site.data.todo %}
